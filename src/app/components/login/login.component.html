@@ -1,16 +1,27 @@
 <div class="parent">
     <div class="child">
-        <form action="">
+        <form [formGroup]="loginForm" action="">
             <label for="">Email:</label>
-            <input type="text" placeholder="Enter your Email" name="" id="">
+            <input type="text" placeholder="Enter your Email" name="" id="" formControlName="email">
+            <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                <p *ngIf="loginForm.get('email')?.errors?.['required']"> You must enter email</p>
+                <p *ngIf="loginForm.get('email')?.errors?.['email']">Enter valid email</p>
+            </div>
                     <br>
             <label for="">password:</label>
-            <input type="password" placeholder="Enter your password" name="" id="">
+            <input type="password" placeholder="Enter your password" name="" id="" formControlName="password">
 
+            <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                <p *ngIf="loginForm.get('password')?.errors?.['required']"> You must enter password</p>
+                <p *ngIf="loginForm.get('password')?.errors?.['minlength']">password must have 4 characters</p>
+            </div>
+
+            
             <div class="button-div">
-                <button class="btn btn-primary">Login</button>
+                <button class="btn btn-primary" (click)="submit()">Login</button>
             </div>
 
         </form>
+
     </div>
 </div>
