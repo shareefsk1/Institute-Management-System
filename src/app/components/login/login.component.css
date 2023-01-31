@@ -18,6 +18,12 @@
     align-items: center;
 }
 
+@media (max-width: 767px) {
+    .child {
+        width: 90%;
+    }
+}
+
 input{
     margin: 5px;
 }
@@ -33,11 +39,7 @@ label{
     align-items: center;
 }
 
-@media (max-width: 767px) {
-    .child {
-        width: 90%;
-    }
-}
+
 
 .error{
     height: 10px;
