@@ -36,7 +36,7 @@ export class CreateStudentComponent {
       }),
       // dynamic form
       type : new FormControl,
-      from: new FormControl,
+      sourcefrom: new FormControl,
       referal : new FormControl
 
 
@@ -68,5 +68,6 @@ export class CreateStudentComponent {
   submit(){
     console.log(this.createForm)
   }
+
 
 }
