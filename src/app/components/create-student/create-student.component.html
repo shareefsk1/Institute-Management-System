@@ -7,22 +7,52 @@
         <h3>Student Form :</h3>
         <label for="">Name: </label>
         <input type="text" name="" id="" formControlName="name">
+        
+        <!-- for form valiadators -->
+        <div class="error" *ngIf="createForm.get('name')?.touched">
+            <p *ngIf="createForm.get('name')?.errors?.['required']">You must add name</p>
+        </div>
+
+
         <br>
         <label for="">Gender: </label>
         <input type="text" name="" id="" formControlName="gender">
         <br>
 
+           <!-- for form valiadators -->
+           <div class="error" *ngIf="createForm.get('gender')?.touched">
+                <p *ngIf="createForm.get('gender')?.errors?.['required']">You must add gender</p>
+            </div>
+
         <label for="">Mobile: </label>
         <input type="number" name="" id="" formControlName="mobile">
         <br>
+
+           <!-- for form valiadators -->
+           <div class="error" *ngIf="createForm.get('mobile')?.touched && createForm.get('mobile')?.invalid"  >
+             <p *ngIf="createForm.get('mobile')?.errors?.['required']">You must add mobile</p>
+             <p *ngIf="createForm.get('mobile')?.errors?.['min']">Mobile number should have minimum 10 numbers</p>
+             <p *ngIf="createForm.get('mobile')?.errors?.['max']">Mobile number don't have grater than 10 numbers</p>
+            </div>
 
         <label for="">Email: </label>
         <input type="email" name="" id="" formControlName="email">
         <br>
 
+           <!-- for form valiadators -->
+           <div class="error" *ngIf="createForm.get('email')?.touched">
+                <p *ngIf="createForm.get('email')?.errors?.['required']">You must add email</p>
+            </div>
+
         <label for="">Batch: </label>
         <input type="text" name="" id="" formControlName="batch">
         <br>
+
+           <!-- for form valiadators -->
+           <div class="error" *ngIf="createForm.get('batch')?.touched">
+                <p *ngIf="createForm.get('batch')?.errors?.['required']">You must add batch</p>
+            </div>
+
         <!-- nested form -->
         <div  formGroupName="address">
 
@@ -35,6 +65,12 @@
     
             <label for="">District: </label>
             <input type="text" name="" id="" formControlName="district">
+
+               <!-- for form valiadators in nested form groups -->
+           <div class="error" *ngIf="createForm.get('address')?.get('district')?.touched && createForm.get('address')?.get('district')?.invalid">
+            <p *ngIf="createForm.get('address')?.get('district')?.errors?.['required']">You must add district</p>
+        </div>
+
             <br>
     
             <label for="">State: </label>
@@ -43,6 +79,14 @@
     
             <label for="">Pincode: </label>
             <input type="number" name="" id="" formControlName="pincode">
+
+            <!-- for form valiadators in nested form groups -->
+            <div class="error" *ngIf="createForm.get('address')?.get('pincode')?.touched && createForm.get('address')?.get('pincode')?.invalid">
+                <p *ngIf="createForm.get('address')?.get('pincode')?.errors?.['required']">You must add pincode</p>
+                <p *ngIf="createForm.get('address')?.get('pincode')?.errors?.['min']">pincode have min 6 numbers</p>
+                <p *ngIf="createForm.get('address')?.get('pincode')?.errors?.['max']">pincode have max 6 numbers</p>
+            </div>
+
             <br>
 
         </div>
@@ -61,6 +105,13 @@
 
                     <label for=""> Percentage: </label>
                     <input type="text" name="" id="" formControlName="percentage">
+
+                    <div class="error" *ngIf="educationFormArray.controls[i].get('percentage')?.touched && educationFormArray.controls[i].get('percentage')?.invalid">
+                        <p *ngIf="educationFormArray.controls[i].get('percentage')?.errors?.['required']">Percentage sholud add</p>
+                        <p *ngIf="educationFormArray.controls[i].get('percentage')?.errors?.['min']">Percentage sholud graterthan 0</p>
+                        <p *ngIf="educationFormArray.controls[i].get('percentage')?.errors?.['max']">Percentage should lessthan 100</p>
+                    </div>
+
                     <br>
 
                     <div>

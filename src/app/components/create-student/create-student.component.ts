@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-student',
@@ -9,18 +9,18 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 export class CreateStudentComponent {
 
   public createForm : FormGroup = new FormGroup({
-    name : new FormControl(),
-    gender : new FormControl(),
-    mobile : new FormControl(),
-    email : new FormControl(),
-    batch : new FormControl(),
+    name : new FormControl(null, [Validators.required]),
+    gender : new FormControl(null, [Validators.required]),
+    mobile : new FormControl(null, [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]),
+    email : new FormControl(null, [Validators.required]),
+    batch : new FormControl(null, [Validators.required]),
     //  nested form
       address: new FormGroup({
         city: new FormControl(),
         mandal: new FormControl(),
-        district: new FormControl(),
+        district: new FormControl(null ,[Validators.required]),
         state: new FormControl(),
-        pincode: new FormControl(),
+        pincode: new FormControl(null, [Validators.required, Validators.min(100000), Validators.max(999999)]),
     
       }),
 
@@ -35,9 +35,9 @@ export class CreateStudentComponent {
         offerDate: new FormControl(),
       }),
       // dynamic form
-      type : new FormControl,
-      sourcefrom: new FormControl,
-      referal : new FormControl
+      type : new FormControl(),
+      sourcefrom: new FormControl(),
+      referal : new FormControl()
 
 
   })
@@ -55,7 +55,7 @@ export class CreateStudentComponent {
      new FormGroup({
       qualification : new FormControl(),
       year : new FormControl(),
-      percentage : new FormControl(),
+      percentage : new FormControl(null,[Validators.required ,Validators.min(0), Validators.max(100)]),
      })
     )
   }
