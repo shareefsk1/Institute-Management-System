@@ -25,8 +25,21 @@ export class CreateStudentComponent {
       }),
 
       // form array 
-      educationArray : new FormArray([])
+      educationArray : new FormArray([]),
+
+        // nested form 
+      companyForm : new FormGroup({
+        name: new FormControl(),
+        location: new FormControl(),
+        package: new FormControl(),
+        offerDate: new FormControl(),
+      })
+
+
   })
+
+
+
 
   // declaring form array as a variable
   get educationFormArray(){

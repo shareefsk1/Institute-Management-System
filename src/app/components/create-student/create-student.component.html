@@ -1,6 +1,10 @@
 <div class="first">
+
+
     <div class="parent">
+
     <form [formGroup]="createForm" action="">
+        <h3>Student Form :</h3>
         <label for="">Name: </label>
         <input type="text" name="" id="" formControlName="name">
         <br>
@@ -69,6 +73,29 @@
 
         <div>
             <button class="btn btn-primary" (click)="add()">Add Education</button>
+        </div>
+
+
+        <!-- nested formgroup -->
+
+        <div formGroupName="companyForm">
+            <h5>Company Details: </h5>
+            <label for="">Name: </label>
+            <input type="text" name="" id="" formControlName="name">
+            <br>
+
+            <label for="">Location: </label>
+            <input type="text" name="" id="" formControlName="location">
+            <br>
+
+            <label for="">package: </label>
+            <input type="text" name="" id="" formControlName="package">
+            <br>
+
+            <label for="">Offer Date</label>
+            <input type="text" name="" id="" formControlName="offerDate">
+            <br>
+
         </div>
 
         <div class="button-div">
