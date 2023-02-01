@@ -33,7 +33,11 @@ export class CreateStudentComponent {
         location: new FormControl(),
         package: new FormControl(),
         offerDate: new FormControl(),
-      })
+      }),
+      // dynamic form
+      type : new FormControl,
+      from: new FormControl,
+      referal : new FormControl
 
 
   })

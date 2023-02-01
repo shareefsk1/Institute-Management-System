@@ -75,6 +75,7 @@
             <button class="btn btn-primary" (click)="add()">Add Education</button>
         </div>
 
+        <hr>
 
         <!-- nested formgroup -->
 
@@ -97,6 +98,28 @@
             <br>
 
         </div>
+
+        <hr>
+
+        <!-- dynamic form -->
+        <label for="">Source Type : </label>
+        <input id="i" type="radio" name="type" value="from" formControlName="type" style="box-shadow: 0px 0px 0px black;">
+        <label for="i">Source From</label>
+
+        <input id="j" type="radio" name="type" value="referal" formControlName="type" style="box-shadow: 0px 0px 0px black;">
+        <label for="j">Referal</label>
+
+        <div *ngIf="createForm.get('type')?.value == 'from' ">
+            <label for="">Source From</label>
+            <input type="text" formControlName="from">
+        </div>
+
+        <div *ngIf="createForm.get('type')?.value == 'referal' ">
+            <label for="">Referal Name</label>
+            <input type="text" formControlName="referal">
+        </div>
+
+
 
         <div class="button-div">
             <button class=" btn btn-primary" (click)="submit()">Submit</button>
