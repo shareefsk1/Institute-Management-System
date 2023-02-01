@@ -14,7 +14,7 @@ export class CreateStudentComponent {
     mobile : new FormControl(),
     email : new FormControl(),
     batch : new FormControl(),
-
+    //  nested form
       address: new FormGroup({
         city: new FormControl(),
         mandal: new FormControl(),
@@ -41,6 +41,11 @@ export class CreateStudentComponent {
       percentage : new FormControl(),
      })
     )
+  }
+
+  // formarray delete 
+  delete(i:number){
+    this.educationFormArray.removeAt(i)
   }
 
   submit(){

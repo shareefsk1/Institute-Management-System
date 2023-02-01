@@ -19,7 +19,7 @@
         <label for="">Batch: </label>
         <input type="text" name="" id="" formControlName="batch">
         <br>
-
+        <!-- nested form -->
         <div  formGroupName="address">
 
             <label for="">City: </label>
@@ -58,6 +58,11 @@
                     <label for=""> Percentage: </label>
                     <input type="text" name="" id="" formControlName="percentage">
                     <br>
+
+                    <div>
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                    </div>
+
                 </div>
             </div>
         </div>

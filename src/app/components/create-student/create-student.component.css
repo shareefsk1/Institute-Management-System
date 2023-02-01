@@ -16,6 +16,10 @@ label{
 
 }
 
+button{
+    margin: 5px;
+}
+
 .first{
     height: 100%;
     width: 100%;
