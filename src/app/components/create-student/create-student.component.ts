@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-create-student',
@@ -43,7 +44,7 @@ export class CreateStudentComponent {
   })
 
 
-
+constructor(private _service:StudentsService){}
 
   // declaring form array as a variable
   get educationFormArray(){
@@ -67,6 +68,14 @@ export class CreateStudentComponent {
 
   submit(){
     console.log(this.createForm)
+    this._service.createStudent(this.createForm.value).subscribe(
+      (data:any) => {
+        alert('Student Created Sucessfully')
+      },
+      (err:any) => {
+        alert('Creation failed')
+      }
+    )
   }
 
 

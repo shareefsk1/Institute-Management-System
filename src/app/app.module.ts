@@ -11,6 +11,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { FormsModule } from '@angular/forms';
 import { CreateStudentComponent } from './components/create-student/create-student.component';
 import { AllStudentsComponent } from './components/all-students/all-students.component';
+import { SlicePipe } from './pipes/slice.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AllStudentsComponent } from './components/all-students/all-students.com
     DashboardComponent,
     PagenotfoundComponent,
     CreateStudentComponent,
-    AllStudentsComponent
+    AllStudentsComponent,
+    SlicePipe
   ],
   imports: [
     BrowserModule,

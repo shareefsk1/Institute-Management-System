@@ -1,1 +1,61 @@
-<p>all-students works!</p>
+
+
+        <div style="margin: 10px;">
+            <input type="text" [(ngModel)]="term">
+            <button (click)="filter()" class="btn btn-primary">Filter</button>
+
+            <select name="" id="" [(ngModel)]="column">
+                <option value="name">Name</option>
+                <option value="gender">Gender</option>
+                <option value="mobile">Mobile</option>
+                <option value="batch">Batch</option>
+            </select>
+
+            <select name="" id="" [(ngModel)]="order">
+                <option value="asc">Ascending</option>
+                <option value="desc">Desending</option>
+            </select>
+
+            <button class="btn btn-primary" (click)="sorting()">Sort</button>
+
+
+        </div>
+
+   
+
+        <table border="2" class="table">
+            <thead >
+
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Gender</th>
+                    <th>Mobile</th>
+                    <th>Batch</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let student of studentDetails">
+                    <td>{{student.name}}</td>
+                    <td><img src="{{student.avatar}}" alt="" height="50px" width="50px"></td>
+                    <td>{{student.gender}}</td>
+                    <td>{{student.mobile}}</td>
+                    <td>{{student.batch}}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+<div class="container">
+       
+    <ul class="pagination">
+      <li *ngFor="let item of j" class="page-item" (click)="pagination(item+1)"><a class="page-link"  >{{item + 1}}</a></li>
+    </ul>
+  </div>
+
+  
+ 
+  
