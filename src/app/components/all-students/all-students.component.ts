@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { GetStudentService } from 'src/app/services/get-student.service';
 
 
@@ -22,7 +23,7 @@ export class AllStudentsComponent {
 
 
 
-  constructor(private _service:GetStudentService){
+  constructor(private _service:GetStudentService , private _router:Router){
 
     _service.getData().subscribe(
       (data:any) =>{
@@ -90,6 +91,10 @@ export class AllStudentsComponent {
         alert('error occur in pagination')
       }
     )
+  }
+
+  view(id:number){
+      this._router.navigateByUrl('/dashboard/student-details/' + id)
   }
 
 

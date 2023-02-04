@@ -32,6 +32,7 @@
                     <th>Gender</th>
                     <th>Mobile</th>
                     <th>Batch</th>
+                    <th>Action</th>
                 </tr>
 
             </thead>
@@ -43,6 +44,9 @@
                     <td>{{student.gender}}</td>
                     <td>{{student.mobile}}</td>
                     <td>{{student.batch}}</td>
+                    <td>
+                        <button (click)="view(student.id)" class="btn btn-primary">View</button>
+                    </td>
                 </tr>
 
             </tbody>
