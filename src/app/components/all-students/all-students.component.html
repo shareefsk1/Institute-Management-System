@@ -45,7 +45,9 @@
                     <td>{{student.mobile}}</td>
                     <td>{{student.batch}}</td>
                     <td>
-                        <button (click)="view(student.id)" class="btn btn-primary">View</button>
+                        <button (click)="view(student.id)" class="btn btn-primary" style="margin: 3px;">View</button>
+                        <button (click)="edit(student.id)" class="btn btn-success" style="margin: 3px;">Edit</button>
+                        <button (click)="delete(student.id)" class="btn btn-danger" style="margin: 3px;">Delete</button>
                     </td>
                 </tr>
 

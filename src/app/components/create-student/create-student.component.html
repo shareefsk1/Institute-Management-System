@@ -4,7 +4,12 @@
     <div class="parent">
 
     <form [formGroup]="createForm" action="">
-        <h3>Student Form :</h3>
+        <h3>{{isEdit ? 'Update Student Form' : 'Create Student Form'}}</h3>
+
+            <!-- another method -->
+            <!-- <h1 *ngIf="isEdit">Edit Vehicle Form</h1>
+            <h1 *ngIf="!isEdit">Create Vehicle Form</h1> -->
+
         <label for="">Name: </label>
         <input type="text" name="" id="" formControlName="name">
         

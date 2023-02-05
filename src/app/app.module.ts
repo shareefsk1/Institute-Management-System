@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateStudentComponent } from './components/create-student/create-student.component';
 import { AllStudentsComponent } from './components/all-students/all-students.component';
 import { SlicePipe } from './pipes/slice.pipe';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SlicePipe } from './pipes/slice.pipe';
     PagenotfoundComponent,
     CreateStudentComponent,
     AllStudentsComponent,
-    SlicePipe
+    SlicePipe,
+    StudentDetailsComponent
   ],
   imports: [
     BrowserModule,

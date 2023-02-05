@@ -5,6 +5,7 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { NotifyGuard } from './Guards/notify.guard';
 
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'dashboard', component:DashboardComponent, canActivate:[AuthGuard], children:[
     {path:'createStudent', component:CreateStudentComponent , canDeactivate:[NotifyGuard]},
-    {path:'allStudents', component:AllStudentsComponent}
+    {path:'allStudents', component:AllStudentsComponent},
+    {path:'student-details/:id', component:StudentDetailsComponent},
+    {path:'edit-details/:id', component:CreateStudentComponent}
   ] },
   {path:'', component:LoginComponent},
   {path:'**', component:PagenotfoundComponent}

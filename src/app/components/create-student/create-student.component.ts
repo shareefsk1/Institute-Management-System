@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { GetStudentService } from 'src/app/services/get-student.service';
 import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
@@ -9,6 +11,11 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class CreateStudentComponent {
 
+  // for edit purpose
+  public isEdit : boolean = false ;
+  public id : number = 0 ;
+
+  
   public createForm : FormGroup = new FormGroup({
     name : new FormControl(null, [Validators.required]),
     gender : new FormControl(null, [Validators.required]),
@@ -44,7 +51,27 @@ export class CreateStudentComponent {
   })
 
 
-constructor(private _service:StudentsService){}
+constructor(private _service:GetStudentService, private _activatedRouter:ActivatedRoute){
+
+  // for edit purpose
+  _activatedRouter.params.subscribe(
+    (data:any) => {
+      if(data.id){
+        this.isEdit = true ;
+        this.id = data.id
+      }
+       
+    }
+  )
+
+    _service.getSingelData(this.id).subscribe(
+      (data2:any) => {
+        this.createForm.patchValue(data2)
+      }
+    )
+
+
+}
 
   // declaring form array as a variable
   get educationFormArray(){
@@ -68,14 +95,34 @@ constructor(private _service:StudentsService){}
 
   submit(){
     console.log(this.createForm)
-    this._service.createStudent(this.createForm.value).subscribe(
-      (data:any) => {
-        alert('Student Created Sucessfully')
-      },
-      (err:any) => {
-        alert('Creation failed')
-      }
-    )
+
+
+    if(this.isEdit){
+        this._service.updateStudent(this.createForm.value, this.id).subscribe(
+          (data:any) => {
+            alert('updated success')
+          },
+          (err:any) => {
+            alert('updated unsucessful')
+          }
+        )
+    }
+
+    else{
+      this._service.createStudent(this.createForm.value).subscribe(
+        (data:any) => {
+          alert('Student Created Sucessfully')
+        },
+        (err:any) => {
+          alert('Creation failed')
+        }
+      )
+    }
+
+
+
+
+
   }
 
 

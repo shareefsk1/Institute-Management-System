@@ -97,5 +97,22 @@ export class AllStudentsComponent {
       this._router.navigateByUrl('/dashboard/student-details/' + id)
   }
 
+  edit(id:number){
+    this._router.navigateByUrl('/dashboard/edit-details/' + id)
+  }
+
+
+  delete(id:any){
+    this._service.delete(id).subscribe(
+      (data) => {
+        location.reload()
+        alert('Deleted successfully')
+      },
+      (err:any) => {
+        alert('Deleted Unsucessful')
+      }
+    )
+  }
+
 
 }
